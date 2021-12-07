@@ -1,5 +1,7 @@
 package HW2;
+import java.lang.Math;
 
+import javax.swing.event.SwingPropertyChangeSupport;
 public class MathGames {
     // 1. Create a method that will calculate the Pythagorean Theorem (https://en.wikipedia.org/wiki/Pythagorean_theorem)
     // c = sqrt(a^2+b^2)
@@ -10,7 +12,16 @@ public class MathGames {
     // Bonus points: Try to make it accept any 2 sides and return the 3rd. So it can take in
     // Hypotenuse and Perpendicular and return the base.
 
+    public static double PythagoreanTheorem(double a, double b){
+       
+       
+       double base = Math.pow(a, 2);
+       double perpendicular = Math.pow(b, 2);
+       double cSquared = base + perpendicular;
+       double c = Math.sqrt(cSquared);
+        return c;
 
+    }
 
     
     // 2. Create a method that will calcuate my grade in the class. You can use the grade range as follows
@@ -25,7 +36,30 @@ public class MathGames {
         // Hint 2: You will probably need to cast the double to an int
         // Hint 3: You will probably need to use the Math.ceil() method 
 
-
+    public static String GradeCalculator(double gradePoint){
+        String Grade = "";
+        double roundedGrade = Math.ceil(gradePoint);
+        //how to cast the variable?
+        if(roundedGrade>=90){
+            return "A";
+        }
+        else if(roundedGrade<=89 && roundedGrade>=80){
+            return "B";
+        }
+        else if(roundedGrade<=79 && roundedGrade>=70){
+            return "C";
+        }
+        else if(roundedGrade<=69 && roundedGrade>=60){
+            return "D";
+        }
+        else if(roundedGrade<60 && roundedGrade>=0){
+            return "F";
+        }
+        //can you return a specfic string?
+        //If not initialize each string variable and return that variable.
+        
+        return Grade;
+    }
 
 
 
@@ -37,13 +71,25 @@ public class MathGames {
     //      Hint 3: It is possible you might need to Cast a double to an int or vice versa
     //      Hint 4: You will probably need to use the Math.ceil() method 
 
-    
+    public static double tipCalculator(double total, int peopleSplit, double percentTip){
+        double tip = percentTip/100;
+        Math.ceil(total);
+        double totalTip = tip * total;
+        double tipPerPerson = totalTip/peopleSplit;
+        Math.ceil(tipPerPerson);
+        //not neccessary but how to cast the tipPerPerson from double to int
+        return tipPerPerson;
+    }
  
 
 
     // you do not need this main if you want to make a tester class
      public static void main(String[] args){
+        System.out.println(MathGames.PythagoreanTheorem(3, 4));
         
+        System.out.println(MathGames.tipCalculator(100.00, 5, 10.00));
+
+
     }
 
 

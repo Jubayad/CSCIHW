@@ -4,7 +4,7 @@ package PROJECT1;
 import java.util.Scanner;
 
 public class BankAccount {
-    private double balance;
+    public double balance;
 
     public BankAccount(){
         balance = 0;
@@ -70,7 +70,25 @@ public class BankAccount {
 
         return selection;
     }
-}
+    
+    public void overdraft(int withdraw){
+        if(withdraw > balance){
+            System.out.println("You currently have $0 in your account. You will be charged with an overdraft fee of $35 if you continue with this transaction. Will you continue?");
+
+        }
+        else(balance >= withdraw){
+            balance -
+        }
+    }
+        // else if(){
+        //     System.out.println("You are withdrawing more money than being held in your account. You will be charged with an overdraft fee of $35 if you continue with this transaction. Will you continue?");
+        // }
+    
+    public void transfer(double bankAccount1, double bankAccount2, double transferAmount){
+        
+    }
+        }
+ }
 
 
 
