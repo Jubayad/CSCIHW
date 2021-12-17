@@ -1,5 +1,6 @@
 package PROJECT2;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -37,13 +38,69 @@ import java.util.Scanner;
 
 public class Dice {
     Random generator = new Random();
-    Scanner keyboard = new Scanner(System.in);
+    int numOfDice;
+    ArrayList <Integer> values = new ArrayList<>();
+    int begIndex, endIndex;
 
     public void DiceCount() {
         int sides = 6;
     }
 
+    public void setNumOfDice(int numOfDice) {
+        this.numOfDice = numOfDice;
+    }
+
+    public void throwDice(){
+        for(int i = 0;i < numOfDice;i++){
+            values.add(generator.nextInt(6));
+        }
+    }
+
+    public void addBracket(){
+        begIndex = -1;
+        for(int i = 0;i < numOfDice;i++){
+            if(begIndex == -1){
+                if(values.get(i) == values.get(i+1)){
+                    begIndex = i;
+                }
+            }
+            else{
+                if(values.get(i) != values.get(i+1)){
+                    endIndex = i;
+                    return;
+                }
+            }
+        }
+    }
+
+    public void print(){
+        StringBuilder res = new StringBuilder();
+        for(int i = 0;i < numOfDice;i++){
+            if(i == begIndex){
+                res.append('{');
+            }
+            res.append(values.get(i));
+
+            if(i == endIndex){
+                res.append('}');
+            }
+
+            res.append(' ');
+        }
+
+        System.out.println(res.toString());
+    }
+
     public static void main(String[] args) {
-        Dice die = new Dice();
+        Scanner keyboard = new Scanner(System.in);
+
+        Dice dice = new Dice();
+
+        System.out.println("Enter number of dice");
+        dice.setNumOfDice(keyboard.nextInt());
+
+        dice.throwDice();
+        dice.addBracket();
+        dice.print();
     }
 }
